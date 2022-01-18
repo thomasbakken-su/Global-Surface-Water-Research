@@ -1,0 +1,80 @@
+"""
+Data_Information.txt
+Global Surface Water data format details
+:Author: Zuyan He
+:Version: v_00
+:Date: 2021_12_04
+"""
+
+"""
+Data Files Format:
+
+1 - Occurrence
+	
+	type: uint8
+	
+	0: not water
+	1: 1% occurrence
+	...
+	100: 100% occurrence
+	255: no data
+
+2 - Occurrence change intensity
+	
+	type: uint8
+	
+	0: value(GEE) = -100 / -100% loss of occurrence 
+	...
+	100: value(GEE) = 0 / no change
+	...
+	200: value(GEE) = 100 / 100% increase in occurrence
+	253: not water
+	254: unable to calculate a value due to no homologous months
+	255: no data
+
+3 - Seasonality
+
+	type: uint8
+
+	0: not water
+	1: 1 month of water
+	...
+	12: 12 months of water (permanent water)
+	255: no data
+
+4 - Recurrence
+
+	type: uint8
+
+	0: not water
+	1: 1% recurrence
+	...
+	100: 100% recurrence
+	255: no data
+
+5 - Transitions
+	
+	type: uint8
+
+	0: not water
+	1: permanent
+	2: new permanent
+	3: lost permanent
+	4: seasonal
+	5: new seasonal
+	6: list seasonal
+	7: seasonal to permanent
+	8: permanent to seasonal
+	9: ephemeral permanent
+	10: ephemeral seasonal
+	255: no data
+
+6 - Maximum water extent
+
+	type: uint8
+
+	0: not water
+	1: water detected
+	255: no data
+
+"""
