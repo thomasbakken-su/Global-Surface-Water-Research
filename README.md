@@ -13,9 +13,13 @@ TIF2CSV.py
 
 Data Folder
 
+	Need manually create this folder at the same level as TIF2CSV.py
+
 	Location for all input file(s)
 
 Result Folder
+
+	Need manually create this folder at the same level as TIF2CSV.py
 
 	Location for all output file(s)
 
