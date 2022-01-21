@@ -6,7 +6,7 @@ Global Surface Water data format details
 :Date: 2021_12_04
 """
 
-"""
+
 Data Files Format:
 
 1 - Occurrence
@@ -77,4 +77,3 @@ Data Files Format:
 	1: water detected
 	255: no data
 
-"""
