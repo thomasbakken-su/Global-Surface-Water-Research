@@ -32,10 +32,12 @@ def reduce(im, ratio, filename, output_dir, file_type):
     current_c = 0
 
     # loop through the originala data and compute the reduced data
+    step = 1
     for i in range(ratio):   # loop row
 
         for j in range(ratio):  # loop col
-
+            print('Step:', step, ' / ', ratio**2)
+            step += 1
             # calculate the starting row, col position
             temp_sum = 0
             no_data_count = 0
@@ -43,10 +45,11 @@ def reduce(im, ratio, filename, output_dir, file_type):
             c_offset = int(j * c_sub)
 
             # loop through current sub_section
+            i = 0
             for nr in range(r_sub):
                 for nc in range(c_sub):
                     pix_val = int(im[nr + r_offset, nc + c_offset])
-
+                    
                     # handles "occurrence" at following:
                     # 255 - no data
                     # skip these data pixels and continue
@@ -95,7 +98,7 @@ def reduce(im, ratio, filename, output_dir, file_type):
         current_r = current_r + r_sub
 
     # save the reduced dataset to csv file in target folder
-    file_out = output_dir + filename + ".csv"  # construct file name with path
+    file_out = output_dir + filename + ".tif"  # construct file name with path
     np.savetxt(file_out, reduced_data, fmt='%i', delimiter=",")
 
 
@@ -106,10 +109,10 @@ if __name__ == "__main__":
     ratio = 10  # number of sections reduced for each dimension
 
     # for each datasets folders, create a list of file names
-    file_list = os.listdir('./Data')
+    file_list = os.listdir('.\\Data')
 
     # set file output location
-    output_dir = './Result/'
+    output_dir = '.\\Result\\'
 
     # remove artifcats from system file when exists
     if ('.DS_Store' in file_list):
@@ -145,8 +148,10 @@ if __name__ == "__main__":
 
         # load in the raw data files
         current_path = os.path.abspath(os.getcwd())
-        file_path = current_path + "/Data/" + filename
+        file_path = current_path + "\\Data\\" + filename
+        print(file_path, '\n')
         im = np.asarray(Image.open(file_path), dtype=np.uint8)
+        print('Reducing...\n')
         reduce(im, ratio, filename, output_dir, file_type)
 
         # print current progress

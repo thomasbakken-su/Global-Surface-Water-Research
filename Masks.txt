@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Feb  4 15:26:37 2022
+
+@author: Thomas
+"""
+
+Exploration of different masks for edge detection and water identification
+
+Part 1: Data Preprocessing
+    The change dataset offers a continuous scale of water presence. Converting
+areas with/without the presence of water/data to a desirable value is trivial 
+with sufficient computing power. A potential solution is Hadoop MapReduce, 
+although non-parallelized methods may work too. 
+
+Part 2: Edge Detection
+    Vertical and horizontal edges can be detected by applying a sobel function
+to the processed data. Essentially, the sobel function highlights pixels that
+are next to a sharp gradient. This will draw outlines of water bodies and will
+help distinguish river channels from wetlands and lakes. 
+
+Part 3: Body Identification
+    Some initial ideas to identify water bodies would be to use an sklearn 
+clustering algorithm, such as DBSCAN, to group water bodies. This will provide
+preliminary metrics for clustering water bodies. Some additional convolutions,
+similar to the Sobel function, may be considered to identify differing bodies
+of water
+    
+Part 4: Errors and Exceptions
+    The scale of the datapoints lends some speculations as to the meaning of 
+'100% increase'. Presumably, this means there was water 100% of the time from 
+in the second epoch. There are some compression artifacts present in the 
+dataset that disrupt the accuracy of continuity. Additionally, it may be 
+relevant to explore any effects of map warpage in the dataset. There are also 
+areas with no data that includes many smaller tributaries
